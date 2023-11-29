@@ -3,8 +3,8 @@ import { Formik, Form } from "formik";
 import { validationSchema } from "../validation";
 import { useDispatch } from "react-redux";
 import { formClose } from "../../../reducers/modal.reducer";
-// import RemoveIcon from '../../RemoveIcon/RemoveIcon';
 import ConfirmButton from "../../Buttons/ConfirmButton/ConfirmButton";
+import { RxCross2 } from "react-icons/rx";
 import { modalSubmitOpen } from "../../../reducers";
 
 import Input from "./Input/Input";
@@ -35,10 +35,12 @@ const UserForm = () => {
       >
         {({ errors, touched }) => (
           <Form>
-            {/* <RemoveIcon onClick={() => {
-                            dispatch(formClose())
-
-                        }} /> */}
+            <RxCross2
+              className="close-icon"
+              onClick={() => {
+                dispatch(formClose());
+              }}
+            />
             <header className="form-header">
               <h2 className="form-title">Please,fill the form</h2>
             </header>
