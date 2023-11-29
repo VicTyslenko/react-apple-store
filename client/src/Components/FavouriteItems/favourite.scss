@@ -1,0 +1,21 @@
+.empty-fav-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+  .text {
+    font-weight: 300;
+    font-size: 23px;
+    letter-spacing: 2px;
+  }
+}
+.favourite-wrapper {
+  padding-top: 100px;
+  max-width: 1000px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 20px;
+}

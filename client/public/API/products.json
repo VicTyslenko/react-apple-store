@@ -1,0 +1,122 @@
+[
+  {
+    "id": "1",
+    "name": "MacBook Air M1",
+    "price": "500",
+    "art": "234234",
+    "color": "blue",
+    "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mac-card-40-macbook-air-202110?wid=1200&hei=1000&fmt=p-jpg&qlt=95&.v=1664576115052",
+    "desc": "Apple M1 chip delivers powerful CPU, GPU and machine learning performance.",
+    "status": "new"
+  },
+  {
+    "id": "2",
+    "name": "MacBook Air M2",
+    "price": "400",
+    "art": "534345",
+    "color": "green",
+    "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mac-card-40-macbook-air-202206?wid=1200&hei=1000&fmt=p-jpg&qlt=95&.v=1653499620093",
+    "desc": "Get more done faster with the next-generation Apple M2 chip — and go all day and into the night with up to 18 hours of battery life.",
+    "status": "new"
+  },
+  {
+    "id": "3",
+    "name": "Ipad",
+    "price": "300",
+    "art": "234214",
+    "color": "white",
+    "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mac-card-40-macbook-pro-13-202206?wid=1200&hei=1000&fmt=p-jpg&qlt=95&.v=1665082744007",
+    "desc": "Get more done faster with the next-generation Apple M2 chip and an active cooling system that sustains pro levels of performance.",
+    "status": "new"
+  },
+  {
+    "id": "4",
+    "name": "MacBook Pro 14",
+    "price": "200",
+    "art": "5345345",
+    "color": "black",
+    "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mac-card-40-macbook-pro-14-16-202301?wid=1200&hei=1000&fmt=p-jpg&qlt=95&.v=1670463778272",
+    "desc": "Liquid Retina XDR display is the ultimate for creators on the move, with Extreme Dynamic Range, incredible contrast and true-to-life colours.",
+    "status": "new"
+  },
+  {
+    "id": "5",
+    "name": "Iphone 14 Pro",
+    "price": "1099",
+    "art": "124234",
+    "color": "yellow",
+    "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-card-40-iphone14pro-202209?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=1663611329492",
+    "desc": "Brighter 6.1” Super Retina XDR display¹ featuring Always-On, which keeps your info at a glance.",
+    "status": "new"
+  },
+  {
+    "id": "6",
+    "name": "Iphone 14",
+    "price": "800",
+    "art": "64564",
+    "color": "purple",
+    "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-card-40-iphone14-202209?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=1661958160674",
+    "desc": "6.1-inch durable design with Ceramic Shield.¹ Plus water and dust resistance.",
+    "status": "new"
+  },
+  {
+    "id": "7",
+    "name": "phone 13 Mini",
+    "price": "649",
+    "art": "23423",
+    "color": "red",
+    "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-card-40-iphone13-202209?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=1661958176452",
+    "desc": "Advanced dual-camera system for incredible low-light photos and videos.",
+    "status": "new"
+  },
+  {
+    "id": "8",
+    "name": "iPhone SE",
+    "price": "650",
+    "art": "6452",
+    "color": "grey",
+    "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-card-40-iphonese-202203?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=1646415838921",
+    "desc": "4.7-inch Retina HD display footnote¹ that’s bright, colourful, and sharp.",
+    "status": "new"
+  },
+  {
+    "id": "9",
+    "name": "iPad Pro",
+    "price": "899",
+    "art": "2342",
+    "color": "space-grey",
+    "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-card-40-pro-202210?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=1664578794100",
+    "desc": "The Apple M2 chip powers a massive leap in performance for pro workflows and all-day battery life¹ .",
+    "status": "new"
+  },
+  {
+    "id": "10",
+    "name": "iPad",
+    "price": "700",
+    "art": "87654",
+    "color": "super-grey",
+    "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-card-40-ipad-202210?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=1665519729404",
+    "desc": "Apple M1 chip powers next-level performance and all-day battery life¹.",
+    "status": "new"
+  },
+  {
+    "id": "11",
+    "name": "iPad Air",
+    "price": "669",
+    "art": "87654",
+    "color": "super-grey",
+    "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-card-40-air-202203?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=1674662574485",
+    "desc": "The A14 Bionic chip lets you run multiple apps and work smoothly between them.",
+    "status": "new"
+  },
+  {
+    "id": "12",
+    "name": "Apple Watch Ultra",
+    "price": "849",
+    "art": "87654",
+    "color": "orange",
+    "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/watch-card-40-ultra-202209_GEO_GB?wid=680&hei=528&fmt=png-alpha&.v=1678733153014",
+    "desc": "The ultra-tough 49mm titanium case with Action button strikes a balance with weight, ruggedness and corrosion resistance.",
+    "status": "new"
+  }
+]
