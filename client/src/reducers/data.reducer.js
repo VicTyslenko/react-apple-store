@@ -17,7 +17,6 @@ const dataSlice = createSlice({
 
   extraReducers: (builder) => {
     builder.addCase(dataFetch.fulfilled, (state, { payload }) => {
-      console.log(payload);
       state.data = payload;
     });
   },
