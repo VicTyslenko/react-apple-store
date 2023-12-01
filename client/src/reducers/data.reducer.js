@@ -1,13 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import sendRequest from "../Helpers/sendRequest";
-import { API_URL } from "../config/API";
+// import { API_URL } from "../config/API";
 
 const initialState = {
   data: [],
 };
 
 export const dataFetch = createAsyncThunk("data/fetch", async () => {
-  const response = await sendRequest(`${API_URL}/products`);
+  const response = await sendRequest(`/API/products.json`);
   return response;
 });
 
@@ -17,6 +17,7 @@ const dataSlice = createSlice({
 
   extraReducers: (builder) => {
     builder.addCase(dataFetch.fulfilled, (state, { payload }) => {
+      console.log(payload);
       state.data = payload;
     });
   },

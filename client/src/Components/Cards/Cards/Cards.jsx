@@ -9,21 +9,22 @@ import "./Cards.scss";
 const Cards = () => {
   const dispatch = useDispatch();
   const fetchData = useSelector((state) => state.data.data);
+  console.log(fetchData);
 
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const modal = useSelector((state) => state.modal.isModal);
 
   const [selectedProduct, setSelectedProduct] = useState([]);
-  useEffect(() => {
-    setData(fetchData.data);
-  }, [fetchData.data]);
+  // useEffect(() => {
+  //   setData(fetchData.data);
+  // }, [fetchData.data]);
 
   return (
     <>
       <section className="main-cards-wrapper">
         <h1 className="main-title">Shop</h1>
         <div className="products-wrapper">
-          {data?.map((product) => (
+          {fetchData?.map((product) => (
             <Card
               key={product.id}
               setProduct={() => setSelectedProduct(product)}
