@@ -1,6 +1,6 @@
 {
   "homepage": "https://VicTyslenko.github.io/react-apple-store",
-  "name": "apple_store",
+  "name": "client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

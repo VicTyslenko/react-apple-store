@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/react-apple-store/static/css/main.fe4f2500.css",
-    "main.js": "/react-apple-store/static/js/main.75d2ad2a.js",
+    "main.css": "/react-apple-store/static/css/main.1314c379.css",
+    "main.js": "/react-apple-store/static/js/main.4a581040.js",
     "index.html": "/react-apple-store/index.html",
-    "main.fe4f2500.css.map": "/react-apple-store/static/css/main.fe4f2500.css.map",
-    "main.75d2ad2a.js.map": "/react-apple-store/static/js/main.75d2ad2a.js.map"
+    "main.1314c379.css.map": "/react-apple-store/static/css/main.1314c379.css.map",
+    "main.4a581040.js.map": "/react-apple-store/static/js/main.4a581040.js.map"
   },
   "entrypoints": [
-    "static/css/main.fe4f2500.css",
-    "static/js/main.75d2ad2a.js"
+    "static/css/main.1314c379.css",
+    "static/js/main.4a581040.js"
   ]
 }

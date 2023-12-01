@@ -15,7 +15,7 @@ const UserForm = () => {
 
   const formInfo = (values) => {
     const userCartInfo = JSON.parse(localStorage.getItem("cart"));
-    console.log(userCartInfo);
+    console.log(values,userCartInfo);
     dispatch(formClose());
     dispatch(modalSubmitOpen());
   };

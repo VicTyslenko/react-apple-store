@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "adding-backend",
+  "description": "backend",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,14 +9,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/VicTyslenko/apple-store-react.git"
+    "url": "https://github.com/VicTyslenko/react-apple-store"
   },
   "author": "Victor Tyslenko",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/VicTyslenko/apple-store-react/issues"
-  },
-  "homepage": "https://github.com/VicTyslenko/apple-store-react#readme",
+  "homepage": "https://VicTyslenko.github.io/react-apple-store",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
