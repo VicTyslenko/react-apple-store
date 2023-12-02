@@ -17,33 +17,36 @@ const Header = () => {
     localStorage.setItem("favourite", JSON.stringify(favCount));
   }, [cartCount, favCount]);
   return (
-    <>
-      <section className="header">
-        <Link to="/react-apple-store" style={{ textDecoration: "none" }}>
-          <div className="title-wrapp">
-            <FaApple
-              style={{
-                width: "20px",
-                height: "20px",
-                color: "black",
-              }}
-            />
-            <h1 className="title">Store</h1>
-          </div>
-        </Link>
-
-        <div className="header-icons-wrapp">
-          <sup className="counter">{favCount.length}</sup>
-          <Link to="/favourites">
-            <AiFillHeart className={favIconColor} />
-          </Link>
-          <sup className="counter">{cartCount.length}</sup>
-          <Link to="/cartitems">
-            <IoBag className={cartIconColor} />
-          </Link>
+    <section className="header">
+      <Link to="/react-apple-store" style={{ textDecoration: "none" }}>
+        <div className="title-wrapp">
+          <FaApple
+            style={{
+              width: "20px",
+              height: "20px",
+              color: "black",
+            }}
+          />
+          <h1 className="title">Store</h1>
         </div>
-      </section>
-    </>
+      </Link>
+      <ul className="list-wrapper">
+        <li className="list-items">Mac</li>
+        <li className="list-items">iPhone</li>
+        <li className="list-items">Watch</li>
+        <li className="list-items">AirPods</li>
+      </ul>
+      <div className="header-icons-wrapp">
+        <sup className="counter">{favCount.length}</sup>
+        <Link to="/favourites">
+          <AiFillHeart className={favIconColor} />
+        </Link>
+        <sup className="counter">{cartCount.length}</sup>
+        <Link to="/cartitems">
+          <IoBag className={cartIconColor} />
+        </Link>
+      </div>
+    </section>
   );
 };
 

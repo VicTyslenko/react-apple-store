@@ -15,7 +15,7 @@
     gap: 20px;
   }
   .title {
-    color: black;
+    color: rgba(0, 0, 0, 0.8);
     display: flex;
     align-items: center;
     font-weight: 300;
@@ -38,5 +38,18 @@
   .black-icon {
     color: black;
     margin-right: 4px;
+  }
+
+  .list-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    .list-items {
+      color: rgba(0, 0, 0, 0.8);
+      list-style: none;
+      cursor: pointer;
+      font-size: 14px;
+    }
   }
 }
