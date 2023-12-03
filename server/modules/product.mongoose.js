@@ -5,7 +5,7 @@ const product = new mongoose.Schema({
     type: String,
     require: true,
   },
-  title: {
+  name: {
     type: String,
     require: true,
   },
@@ -13,38 +13,12 @@ const product = new mongoose.Schema({
     type: Number,
     require: true,
   },
-  article: {
-    type: Number,
-    require: true,
-  },
-  developer: {
+
+  desc: {
     type: String,
     require: true,
   },
-  description: {
-    type: String,
-    require: true,
-  },
-  genre: {
-    type: String,
-    require: true,
-  },
-  language: {
-    type: String,
-    require: true,
-  },
-  the_plot: {
-    type: String,
-    require: true,
-  },
-  data: {
-    type: String,
-    require: true,
-  },
-  platforms: {
-    type: String,
-    require: true,
-  },
+
   category: {
     type: Number,
     require: true,
