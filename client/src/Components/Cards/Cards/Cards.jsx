@@ -8,7 +8,7 @@ import "./Cards.scss";
 
 const Cards = () => {
   const dispatch = useDispatch();
-  const fetchData = useSelector((state) => state.data.data);
+  const fetchData = useSelector((state) => state.data.data);  
 
   const [data, setData] = useState([]);
   const modal = useSelector((state) => state.modal.isModal);

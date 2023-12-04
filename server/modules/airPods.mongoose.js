@@ -1,7 +1,6 @@
 const { model, mongoose } = require("mongoose");
-
-const product = new mongoose.Schema({
-  src: {
+const airPods = new mongoose.Schema({
+  img: {
     type: String,
     required: true,
   },
@@ -19,14 +18,14 @@ const product = new mongoose.Schema({
     required: true,
   },
 
-  category: {
-    type: String,
-    required: true,
-  },
+  // category: {
+  //   type: String,
+  //   required: true,
+  // },
   status: {
     type: String,
     required: true,
   },
 });
 
-module.exports = model("Product", product);
+module.exports = model("airPods", airPods);

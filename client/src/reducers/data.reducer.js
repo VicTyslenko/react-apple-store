@@ -6,8 +6,10 @@ const initialState = {
   data: [],
 };
 
-export const dataFetch = createAsyncThunk("data/fetch", async () => {
-  const response = await sendRequest(`${API_URL}/products`);
+export const dataFetch = createAsyncThunk("data/fetch", async (category) => {
+  const response = await sendRequest(
+    `${API_URL}/products?category=${category}`
+  );
   return response;
 });
 
@@ -17,6 +19,7 @@ const dataSlice = createSlice({
 
   extraReducers: (builder) => {
     builder.addCase(dataFetch.fulfilled, (state, { payload }) => {
+      console.log(payload);
       state.data = payload;
     });
   },
