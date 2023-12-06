@@ -2,11 +2,10 @@ const { Router } = require("express");
 const router = Router();
 
 const Product = require("../modules/product.mongoose");
-const AirPods = require("../modules/airPods.mongoose");
-
 
 router.get("/products", async (request, response) => {
   const { category } = request.query;
+  // const { status } = request.query;
 
   //   const limit = request.query._limit;
   //   const page = request.query._page || 1;

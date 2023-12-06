@@ -10,6 +10,7 @@
   left: 0;
   right: 0;
   .title-wrapp {
+    cursor: pointer;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -45,11 +46,13 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+
     .list-items {
       color: rgba(0, 0, 0, 0.8);
-      list-style: none;
+      text-decoration: none;
       cursor: pointer;
       font-size: 14px;
+      list-style: none;
     }
   }
 }

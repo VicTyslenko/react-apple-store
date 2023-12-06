@@ -1,14 +1,22 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AiFillHeart } from "react-icons/ai";
 import { useEffect } from "react";
 import { FaApple } from "react-icons/fa";
 import { IoBag } from "react-icons/io5";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setSelectedCategory,
+  resetSelectedCategory,
+} from "../../reducers/filter.reducer";
 import "./Header.scss";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const cartCount = useSelector((state) => state.cart.cartToLocal);
   const favCount = useSelector((state) => state.favourite.favouriteToLocal);
+  const products = ["Mac", "iPhone", "Watch", "AirPods"];
 
   const favIconColor = favCount.length ? "red-icon" : "black-icon";
   const cartIconColor = cartCount.length ? "red-icon" : "black-icon";
@@ -18,24 +26,38 @@ const Header = () => {
   }, [cartCount, favCount]);
   return (
     <section className="header">
-      <Link to="/react-apple-store" style={{ textDecoration: "none" }}>
-        <div className="title-wrapp">
-          <FaApple
-            style={{
-              width: "20px",
-              height: "20px",
-              color: "black",
-            }}
-          />
-          <h1 className="title">Store</h1>
-        </div>
-      </Link>
+      <div
+        className="title-wrapp"
+        onClick={() => {
+          dispatch(resetSelectedCategory());
+          navigate("/react-apple-store");
+        }}
+      >
+        <FaApple
+          style={{
+            width: "20px",
+            height: "20px",
+            color: "black",
+          }}
+        />
+        <h1 className="title">Store</h1>
+      </div>
+
       <ul className="list-wrapper">
-        <li className="list-items">Mac</li>
-        <li className="list-items">iPhone</li>
-        <li className="list-items">Watch</li>
-        <li className="list-items">AirPods</li>
+        {products.map((product) => (
+          <li
+            className="list-items"
+            key={product}
+            onClick={() => {
+              dispatch(setSelectedCategory(product.toLowerCase()));
+              navigate("/react-apple-store");
+            }}
+          >
+            {product}
+          </li>
+        ))}
       </ul>
+
       <div className="header-icons-wrapp">
         <sup className="counter">{favCount.length}</sup>
         <Link to="/favourites">
