@@ -5,13 +5,15 @@ import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { modalClose, addToCart, dataFetch } from "../../../reducers";
 import "./Cards.scss";
+import RingLoader from "react-spinners/RingLoader";
 
 const Cards = () => {
   const dispatch = useDispatch();
   const userCategory = useSelector((state) => state.filter.selectedCategory);
-  console.log(userCategory);
   const fetchData = useSelector((state) => state.data.data);
+  const loader = useSelector((state) => state.data.isLoading);
   const [data, setData] = useState([]);
+
   useEffect(() => {
     dispatch(dataFetch({ category: userCategory }));
   }, [userCategory, dispatch]);
@@ -40,16 +42,24 @@ const Cards = () => {
         <h1 className="main-title">
           {userCategory === "iphone" ? iPhoneTitle : title}
         </h1>
-        <div className="products-wrapper">
-          {data?.map((product) => (
-            <Card
-              key={product.id}
-              setProduct={() => setSelectedProduct(product)}
-              item={product}
-            />
-          ))}
-        </div>
+        {loader ? (
+          <div className="products-wrapper">
+            <RingLoader className="loader" />
+            <p>Loading...</p>
+          </div>
+        ) : (
+          <div className="products-wrapper">
+            {data?.map((product) => (
+              <Card
+                key={product.id}
+                setProduct={() => setSelectedProduct(product)}
+                item={product}
+              />
+            ))}
+          </div>
+        )}
       </section>
+
       {modal && (
         <Modal
           text="Would you like to continue?"

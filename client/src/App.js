@@ -4,14 +4,8 @@ import CartItems from "./Components/CartItems/CartItems";
 import { Routes, Route } from "react-router-dom";
 import "./App.scss";
 import FavouriteItems from "./Components/FavouriteItems/FavouriteItems";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { dataFetch } from "./reducers";
+
 const App = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(dataFetch());
-  }, [dispatch]);
   return (
     <div className="container">
       <Header />
