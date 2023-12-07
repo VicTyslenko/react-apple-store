@@ -63,8 +63,7 @@ const Card = ({ item, setProduct }) => {
 
       <div className="image-wrapper">
         <img
-          width="340px"
-          height="264px"
+         
           src={img}
           alt="Iphone"
           className="image-item"
