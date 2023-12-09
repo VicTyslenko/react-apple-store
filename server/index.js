@@ -21,7 +21,7 @@ app.use(apiRouter);
 // app.use("/auth", urlencodedParser, authApiRouter);
 
 app.all("*", (request, response) => {
-  response.status(404).send("resource not found");
+  response.status(404).send("resource not");
 });
 const start = async () => {
   try {
