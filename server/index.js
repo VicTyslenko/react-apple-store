@@ -24,9 +24,9 @@ app.use(apiRouter);
 // app.use("/api", urlencodedParser, usersApiRouter);
 // app.use("/auth", urlencodedParser, authApiRouter);
 
-// app.all("*", (request, response) => {
-//   response.status(404).send("resource not found");
-// });
+app.all("*", (request, response) => {
+  response.status(404).send("resource not found");
+});
 const start = async () => {
   try {
     mongoose
