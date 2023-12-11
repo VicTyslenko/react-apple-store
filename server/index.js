@@ -9,17 +9,13 @@ const apiRouter = require("./routers/products.api");
 // const authApiRouter = require("./routers/auth.api");
 
 app.use(cors());
-app.use(express.static("./client/public"));
+app.use(express.static("./public"));
 app.use(express.urlencoded({ extended: true }));
 // const urlencodedParser = express.urlencoded({ extended: false });
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT || 4444;
 
 const MONGO_URL =
-  process.env.MONGO_URL ||
   "mongodb+srv://VTyslenko:drummerbass4000@cluster0.weallwn.mongodb.net/apple-products";
-
-// const MONGO_URL =
-//   "mongodb+srv://VTyslenko:drummerbass4000@cluster0.weallwn.mongodb.net/apple-products";
 app.use(apiRouter);
 // app.use("/api", urlencodedParser, usersApiRouter);
 // app.use("/auth", urlencodedParser, authApiRouter);
@@ -27,6 +23,7 @@ app.use(apiRouter);
 app.all("*", (request, response) => {
   response.status(404).send("resource not found");
 });
+
 const start = async () => {
   try {
     mongoose
