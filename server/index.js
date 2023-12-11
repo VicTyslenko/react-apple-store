@@ -15,13 +15,17 @@ app.use(express.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 4444;
 
 const MONGO_URL =
+  process.env.MONGO_URL ||
   "mongodb+srv://VTyslenko:drummerbass4000@cluster0.weallwn.mongodb.net/apple-products";
+
+// const MONGO_URL =
+//   "mongodb+srv://VTyslenko:drummerbass4000@cluster0.weallwn.mongodb.net/apple-products";
 app.use(apiRouter);
 // app.use("/api", urlencodedParser, usersApiRouter);
 // app.use("/auth", urlencodedParser, authApiRouter);
 
 app.all("*", (request, response) => {
-  response.status(404).send("resource not");
+  response.status(404).send("resource not found");
 });
 const start = async () => {
   try {
