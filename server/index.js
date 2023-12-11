@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.static("./client/public"));
 app.use(express.urlencoded({ extended: true }));
 // const urlencodedParser = express.urlencoded({ extended: false });
-const PORT = process.env.PORT || 4444;
+const PORT = process.env.PORT || 10000;
 
 const MONGO_URL =
   process.env.MONGO_URL ||
