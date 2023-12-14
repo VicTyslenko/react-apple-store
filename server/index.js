@@ -9,7 +9,7 @@ const apiRouter = require("./routers/products.api");
 // const authApiRouter = require("./routers/auth.api");
 
 app.use(cors());
-app.use(express.static("./build"));
+app.use(express.static("./public"));
 app.use(express.urlencoded({ extended: true }));
 // const urlencodedParser = express.urlencoded({ extended: false });
 const PORT = process.env.PORT || 4444;
