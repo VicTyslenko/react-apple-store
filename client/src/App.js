@@ -12,7 +12,7 @@ const App = () => {
 
       <Routes>
         <Route path="/cartitems" element={<CartItems />} />
-        <Route path="/react-apple-store" element={<Cards />} />
+        <Route path="/" element={<Cards />} />
         <Route path="/favourites" element={<FavouriteItems />} />
 
         <Route

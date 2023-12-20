@@ -30,7 +30,7 @@ const Header = () => {
         className="title-wrapp"
         onClick={() => {
           dispatch(resetSelectedCategory());
-          navigate("/react-apple-store");
+          navigate("/");
         }}
       >
         <FaApple
@@ -50,7 +50,7 @@ const Header = () => {
             key={product}
             onClick={() => {
               dispatch(setSelectedCategory(product.toLowerCase()));
-              navigate("/react-apple-store");
+              navigate("/");
             }}
           >
             {product}
