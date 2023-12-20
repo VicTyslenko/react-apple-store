@@ -27,7 +27,6 @@ const dataSlice = createSlice({
     });
     builder.addCase(dataFetch.fulfilled, (state, { payload }) => {
       state.data = payload;
-      console.log(payload);
       state.isLoading = false;
     });
   },
