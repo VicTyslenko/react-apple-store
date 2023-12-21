@@ -1,4 +1,5 @@
 import ConfirmButton from "../../Buttons/ConfirmButton/ConfirmButton";
+import DescriptionModal from "../../Modal/DescriptionModal/DescriptionModal";
 import { AiFillHeart } from "react-icons/ai";
 import { useState } from "react";
 import PropTypes from "prop-types";
@@ -13,7 +14,7 @@ import "./Card.scss";
 
 const Card = ({ item, setProduct }) => {
   const { name, price, img, id } = item;
-  
+
   const dispatch = useDispatch();
 
   const favourite = Boolean(
@@ -62,12 +63,7 @@ const Card = ({ item, setProduct }) => {
       </div>
 
       <div className="image-wrapper">
-        <img
-         
-          src={img}
-          alt="Iphone"
-          className="image-item"
-        />
+        <img src={img} alt="Iphone" className="image-item" />
       </div>
       <div className="bottom-wrapp">
         <p className="price">£{price}</p>
@@ -80,6 +76,8 @@ const Card = ({ item, setProduct }) => {
           }}
         />
       </div>
+      {/* <DescriptionModal /> */}
+      <button className="read-more-hidden">Read more</button>
     </div>
   );
 };
