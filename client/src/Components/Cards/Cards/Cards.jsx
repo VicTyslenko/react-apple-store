@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Modal from "../../Modal/Modal";
 import Card from "../Card/Card";
+import DescriptionModal from "../../Modal/DescriptionModal/DescriptionModal";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { modalClose, addToCart, dataFetch } from "../../../reducers";
@@ -10,10 +11,19 @@ import RingLoader from "react-spinners/RingLoader";
 const Cards = () => {
   const dispatch = useDispatch();
   const userCategory = useSelector((state) => state.filter.selectedCategory);
+
   const fetchData = useSelector((state) => state.data.data);
   const loader = useSelector((state) => state.data.isLoading);
   const [data, setData] = useState([]);
+  const [isOpenedDescriptionModal, setIsOpenedDescriptionModal] =
+    useState(false);
 
+  const handleClickModal = () => {
+    setIsOpenedDescriptionModal(true);
+  };
+  const closeDescriptionModal = () => {
+    setIsOpenedDescriptionModal(false);
+  };
   useEffect(() => {
     dispatch(dataFetch({ category: userCategory }));
   }, [userCategory, dispatch]);
@@ -54,6 +64,7 @@ const Cards = () => {
                 key={product.id}
                 setProduct={() => setSelectedProduct(product)}
                 item={product}
+                openDescriptionModal={handleClickModal}
               />
             ))}
           </div>
@@ -69,6 +80,13 @@ const Cards = () => {
           onConfirm={() => {
             dispatch(addToCart(selectedProduct));
             dispatch(modalClose());
+          }}
+        />
+      )}
+      {isOpenedDescriptionModal && (
+        <DescriptionModal
+          closeModal={() => {
+            closeDescriptionModal();
           }}
         />
       )}

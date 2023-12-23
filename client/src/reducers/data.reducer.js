@@ -5,6 +5,7 @@ import { API_URL } from "../config/API";
 const initialState = {
   data: [],
   isLoading: false,
+  selectedCard: null,
 };
 
 export const dataFetch = createAsyncThunk(
@@ -17,11 +18,23 @@ export const dataFetch = createAsyncThunk(
   }
 );
 
+export const fetchProductById = createAsyncThunk(
+  "data/fetchProductById",
+  async (productId) => {
+    const response = await sendRequest(`${API_URL}/products/${productId}`);
+    return response;
+  }
+);
+
 const dataSlice = createSlice({
   name: "data",
   initialState,
 
   extraReducers: (builder) => {
+    builder.addCase(fetchProductById.fulfilled, (state, { payload }) => {
+      state.selectedCard = payload;
+    });
+
     builder.addCase(dataFetch.pending, (state) => {
       state.isLoading = true;
     });
