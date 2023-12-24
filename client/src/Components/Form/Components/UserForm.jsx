@@ -4,8 +4,9 @@ import { validationSchema } from "../validation";
 import { useDispatch } from "react-redux";
 import { formClose } from "../../../reducers/modal.reducer";
 import ConfirmButton from "../../Buttons/ConfirmButton/ConfirmButton";
+
 import { RxCross2 } from "react-icons/rx";
-import { modalSubmitOpen } from "../../../reducers";
+import { modalSubmitOpen, modalDescriptionClose } from "../../../reducers";
 
 import Input from "./Input/Input";
 import "./UserForm.scss";
@@ -15,9 +16,10 @@ const UserForm = () => {
 
   const formInfo = (values) => {
     const userCartInfo = JSON.parse(localStorage.getItem("cart"));
-    console.log(values,userCartInfo);
+    console.log(values, userCartInfo);
     dispatch(formClose());
     dispatch(modalSubmitOpen());
+    dispatch(modalDescriptionClose());
   };
 
   return (

@@ -39,7 +39,14 @@
   }
 
   .confirm-btn {
-    border-radius: 15px;
     margin-top: 10px;
+    border: none;
+    width: 100px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 20px;
+    background: #0071e3;
+    color: #fff;
+    padding: 10px;
   }
 }

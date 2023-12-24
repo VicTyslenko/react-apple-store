@@ -9,12 +9,13 @@ import {
   addToFavourite,
   modalOpen,
   removeFromFavourite,
+ 
 } from "../../../reducers";
 import { useDispatch } from "react-redux";
 
 import "./Card.scss";
 
-const Card = ({ item, setProduct, openDescriptionModal }) => {
+const Card = ({ item, setProduct, openModal }) => {
   const { name, price, img, id, _id } = item;
 
   const dispatch = useDispatch();
@@ -83,7 +84,7 @@ const Card = ({ item, setProduct, openDescriptionModal }) => {
       <button
         className="read-more-hidden"
         onClick={() => {
-          openDescriptionModal();
+          openModal();
           handleCardClick();
         }}
       >

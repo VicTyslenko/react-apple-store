@@ -14,11 +14,34 @@
 }
 
 .description-modal-wrapp {
+  position: relative;
   width: 800px;
   background-color: #fff;
-  padding: 30px;
+  padding: 45px 30px 20px 30px;
   border-radius: 20px;
 
+  .close-modal {
+    content: "X";
+    position: absolute;
+    left: 0;
+    top: -60px;
+    background: rgb(228, 228, 228);
+    border-radius: 50%;
+    color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    outline: none;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .header-wrapp {
+    display: flex;
+    justify-content: space-between;
+  }
   .title {
     margin: 0;
   }
@@ -32,7 +55,17 @@
     align-items: center;
     gap: 10px;
   }
-  .description{
+  .description {
     max-width: 435px;
+  }
+  .desc-button {
+    border: none;
+    width: 90px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 20px;
+    background: #0071e3;
+    color: #fff;
+    padding: 10px;
   }
 }
