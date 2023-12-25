@@ -15,7 +15,7 @@ const DescriptionModal = () => {
   return (
     <div className="total-description-modal-wrapper">
       {loader ? (
-        <div className="description-modal-wrapp">
+        <div className="description-modal-wrapp loader-wrapp">
           <RingLoader className="loader" />
           <p>Loading...</p>
         </div>
