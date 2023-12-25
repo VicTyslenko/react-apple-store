@@ -29,15 +29,26 @@
     color: black;
   }
   .close-icon {
-    position: absolute;
     color: black;
-    top: 12px;
-    right: 12px;
-    cursor: pointer;
+
     width: 20px;
     height: 20px;
   }
-
+  .close-icon-wrapp {
+    position: absolute;
+    left: 0;
+    top: -44px;
+    background: rgb(228, 228, 228);
+    border-radius: 50%;
+    color: #6e6e73;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    outline: none;
+    cursor: pointer;
+  }
   .confirm-btn {
     margin-top: 10px;
     border: none;

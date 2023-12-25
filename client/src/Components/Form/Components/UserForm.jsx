@@ -43,12 +43,14 @@ const UserForm = () => {
         >
           {({ errors, touched }) => (
             <Form>
-              <RxCross2
-                className="close-icon"
-                onClick={() => {
-                  dispatch(formClose());
-                }}
-              />
+              <div className="close-icon-wrapp">
+                <RxCross2
+                  className="close-icon"
+                  onClick={() => {
+                    dispatch(formClose());
+                  }}
+                />
+              </div>
 
               <h1 className="form-title">Please, fill the form</h1>
 

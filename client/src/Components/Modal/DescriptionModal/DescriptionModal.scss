@@ -57,6 +57,12 @@
   }
   .description {
     max-width: 435px;
+    font-size: 17px;
+    line-height: 1.7;
+    font-weight: 400;
+    font-family: SF Pro Text, SF Pro Icons, AOS Icons, Helvetica Neue, Helvetica,
+      Arial, sans-serif;
+    font-weight: 600;
   }
   .desc-button {
     border: none;
@@ -67,5 +73,8 @@
     background: #0071e3;
     color: #fff;
     padding: 10px;
+  }
+  .status {
+    color: #bf4800;
   }
 }

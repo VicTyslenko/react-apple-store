@@ -31,8 +31,12 @@ const dataSlice = createSlice({
   initialState,
 
   extraReducers: (builder) => {
+    builder.addCase(fetchProductById.pending, (state) => {
+      state.isLoading = true;
+    });
     builder.addCase(fetchProductById.fulfilled, (state, { payload }) => {
       state.selectedCard = payload;
+      state.isLoading = false;
     });
 
     builder.addCase(dataFetch.pending, (state) => {
