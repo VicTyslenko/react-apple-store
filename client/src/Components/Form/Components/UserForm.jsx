@@ -4,7 +4,8 @@ import { validationSchema } from "../validation";
 import { useDispatch } from "react-redux";
 import { formClose } from "../../../reducers/modal.reducer";
 import ConfirmButton from "../../Buttons/ConfirmButton/ConfirmButton";
-
+import sendRequest from "../../../Helpers/sendRequest";
+import { API_URL } from "../../../config/API";
 import { RxCross2 } from "react-icons/rx";
 import { modalSubmitOpen, modalDescriptionClose } from "../../../reducers";
 
@@ -14,12 +15,23 @@ import "./UserForm.scss";
 const UserForm = () => {
   const dispatch = useDispatch();
 
-  const formInfo = (values) => {
+  const formInfo = async (values) => {
     const userCartInfo = JSON.parse(localStorage.getItem("cart"));
     console.log(values, userCartInfo);
     dispatch(formClose());
     dispatch(modalSubmitOpen());
     dispatch(modalDescriptionClose());
+    try {
+      const result = await sendRequest(
+        `${API_URL}/api/register`,
+        "POST",
+        values
+      );
+
+      console.log("User info added to database", result);
+    } catch (error) {
+      console.error("Failed to send data to server", error);
+    }
   };
 
   return (
