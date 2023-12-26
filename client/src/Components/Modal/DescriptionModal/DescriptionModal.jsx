@@ -8,7 +8,6 @@ const DescriptionModal = () => {
   const dispatch = useDispatch();
   const selectedCard = useSelector((state) => state.data.selectedCard);
   const loader = useSelector((state) => state.data.isLoading);
-  console.log(loader);
   if (!selectedCard) return null;
   const { name, desc, status, img, price } = selectedCard;
 

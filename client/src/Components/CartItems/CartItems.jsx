@@ -21,7 +21,7 @@ const CartItems = () => {
   const modal = useSelector((state) => state.modal.isModal);
   const cart = useSelector((state) => state.cart.cartToLocal);
   const navigate = useNavigate();
-
+  const totalPrice = useSelector((state) => state.cart.totalPrice);
   const form = useSelector((state) => state.modal.isForm);
   const submission = useSelector((state) => state.modal.isModalSubmit);
   return (
@@ -39,8 +39,13 @@ const CartItems = () => {
         </div>
       ) : (
         <div className="cart-container">
-          <div className="top-wrapper">
-            <p className="title">Shopping bag</p>
+          <div className="head-wrapper">
+            <div className="total-price-wrapp">
+              <p className="title">Shopping bag</p>
+              <p className="total-price">
+                Total price: <span className="price-color">£{totalPrice}</span>
+              </p>
+            </div>
 
             <p
               className="back"
@@ -51,7 +56,6 @@ const CartItems = () => {
               Back
             </p>
           </div>
-
           <div className="cart-items-wrapper">
             {cart.map((el) => (
               <div key={el.id}>

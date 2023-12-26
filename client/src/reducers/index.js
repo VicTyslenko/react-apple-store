@@ -2,6 +2,7 @@ import cartReducer, {
   addToCart,
   removeFromCart,
   emptyCart,
+  totalPriceCount,
 } from "./cart.reducer";
 import modalReducer, {
   modalOpen,
@@ -24,6 +25,7 @@ export {
   addToCart,
   removeFromCart,
   emptyCart,
+  totalPriceCount,
   modalReducer,
   modalOpen,
   modalClose,
