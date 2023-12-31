@@ -14,7 +14,7 @@ export const dataFetch = createAsyncThunk(
     const response = await sendRequest(
       `${API_URL}/products${category ? `?category=${category}` : ""}`
     );
-    return response;
+    return response.data;
   }
 );
 
@@ -22,7 +22,7 @@ export const fetchProductById = createAsyncThunk(
   "data/fetchProductById",
   async (productId) => {
     const response = await sendRequest(`${API_URL}/products/${productId}`);
-    return response;
+    return response.data;
   }
 );
 

@@ -1,12 +1,3 @@
-// const sendRequest = async (url) => {
-//   const response = await fetch(url);
-//   const result = await response.json();
-
-//   return result;
-// };
-
-// export default sendRequest;
-
 const sendRequest = async (url, method = "GET", data = null) => {
   const options = {
     method: method,
@@ -22,7 +13,10 @@ const sendRequest = async (url, method = "GET", data = null) => {
   const response = await fetch(url, options);
   const result = await response.json();
 
-  return result;
+  return {
+    data: result,
+    status: response.status,
+  };
 };
 
 export default sendRequest;

@@ -1,5 +1,5 @@
-import React from "react";
 import { Formik, Form } from "formik";
+import { useState } from "react";
 import { validationSchema } from "../validation";
 import { useDispatch } from "react-redux";
 import { formClose } from "../../../reducers/modal.reducer";
@@ -14,23 +14,28 @@ import "./UserForm.scss";
 
 const UserForm = () => {
   const dispatch = useDispatch();
+  const [serverError, setServerError] = useState(null);
 
   const formInfo = async (values) => {
-    const userCartInfo = JSON.parse(localStorage.getItem("cart"));
-    console.log(values, userCartInfo);
-    dispatch(formClose());
-    dispatch(modalSubmitOpen());
-    dispatch(modalDescriptionClose());
     try {
       const result = await sendRequest(
         `${API_URL}/api/register`,
         "POST",
         values
       );
-
-      console.log("User info added to database", result);
+      if (result.status >= 200 && result.status < 300) {
+        console.log(result.data.message);
+        setServerError(null);
+        dispatch(formClose());
+        dispatch(modalSubmitOpen());
+        dispatch(modalDescriptionClose());
+      } else {
+        setServerError(result.data);
+        console.log(result.data);
+      }
     } catch (error) {
-      console.error("Failed to send data to server", error);
+      console.error("Network or server error:", error);
+      setServerError("An unexpected error occurred");
     }
   };
 
@@ -104,6 +109,7 @@ const UserForm = () => {
             </Form>
           )}
         </Formik>
+        {serverError && <p className="error-message">{serverError}</p>}
       </div>
     </div>
   );

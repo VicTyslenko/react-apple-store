@@ -23,9 +23,13 @@ router.post("/register", async (request, response) => {
     response.status(201).json({ message: "User registered successfully" });
   } catch (error) {
     if (error.code === 11000) {
-      return response.status(400).send("Email already exists.");
+      const field = Object.keys(error.keyPattern)[0];
+      return response
+        .status(400)
+        .json(
+          `${field.charAt(0).toUpperCase() + field.slice(1)} already exists`
+        );
     }
-    console.log(error);
     response.status(500).json({ error: error.message });
   }
 });
