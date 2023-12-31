@@ -29,17 +29,40 @@
     color: black;
   }
   .close-icon {
-    position: absolute;
     color: black;
-    top: 12px;
-    right: 12px;
-    cursor: pointer;
+
     width: 20px;
     height: 20px;
   }
-
+  .close-icon-wrapp {
+    position: absolute;
+    left: 0;
+    top: -44px;
+    background: rgb(228, 228, 228);
+    border-radius: 50%;
+    color: #6e6e73;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    outline: none;
+    cursor: pointer;
+  }
   .confirm-btn {
-    border-radius: 15px;
+    margin-top: 10px;
+    border: none;
+    width: 100px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 20px;
+    background: #0071e3;
+    color: #fff;
+    padding: 10px;
+  }
+
+  .error-message {
+    color: #bf4800;
     margin-top: 10px;
   }
 }

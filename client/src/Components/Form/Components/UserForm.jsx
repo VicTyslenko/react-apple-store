@@ -1,23 +1,42 @@
-import React from "react";
 import { Formik, Form } from "formik";
+import { useState } from "react";
 import { validationSchema } from "../validation";
 import { useDispatch } from "react-redux";
 import { formClose } from "../../../reducers/modal.reducer";
 import ConfirmButton from "../../Buttons/ConfirmButton/ConfirmButton";
+import sendRequest from "../../../Helpers/sendRequest";
+import { API_URL } from "../../../config/API";
 import { RxCross2 } from "react-icons/rx";
-import { modalSubmitOpen } from "../../../reducers";
+import { modalSubmitOpen, modalDescriptionClose } from "../../../reducers";
 
 import Input from "./Input/Input";
 import "./UserForm.scss";
 
 const UserForm = () => {
   const dispatch = useDispatch();
+  const [serverError, setServerError] = useState(null);
 
-  const formInfo = (values) => {
-    const userCartInfo = JSON.parse(localStorage.getItem("cart"));
-    console.log(values,userCartInfo);
-    dispatch(formClose());
-    dispatch(modalSubmitOpen());
+  const formInfo = async (values) => {
+    try {
+      const result = await sendRequest(
+        `${API_URL}/api/register`,
+        "POST",
+        values
+      );
+      if (result.status >= 200 && result.status < 300) {
+        console.log(result.data.message);
+        setServerError(null);
+        dispatch(formClose());
+        dispatch(modalSubmitOpen());
+        dispatch(modalDescriptionClose());
+      } else {
+        setServerError(result.data);
+        console.log(result.data);
+      }
+    } catch (error) {
+      console.error("Network or server error:", error);
+      setServerError("An unexpected error occurred");
+    }
   };
 
   return (
@@ -41,12 +60,14 @@ const UserForm = () => {
         >
           {({ errors, touched }) => (
             <Form>
-              <RxCross2
-                className="close-icon"
-                onClick={() => {
-                  dispatch(formClose());
-                }}
-              />
+              <div className="close-icon-wrapp">
+                <RxCross2
+                  className="close-icon"
+                  onClick={() => {
+                    dispatch(formClose());
+                  }}
+                />
+              </div>
 
               <h1 className="form-title">Please, fill the form</h1>
 
@@ -88,6 +109,7 @@ const UserForm = () => {
             </Form>
           )}
         </Formik>
+        {serverError && <p className="error-message">{serverError}</p>}
       </div>
     </div>
   );

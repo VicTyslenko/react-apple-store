@@ -1,18 +1,33 @@
 import { useState, useEffect } from "react";
 import Modal from "../../Modal/Modal";
 import Card from "../Card/Card";
+import DescriptionModal from "../../Modal/DescriptionModal/DescriptionModal";
+import UserForm from "../../Form/Components/UserForm";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import { modalClose, addToCart, dataFetch } from "../../../reducers";
+import ModalOnSubmit from "../../Modal/ModalOnSubmit/ModalOnSubmit";
+import {
+  modalClose,
+  addToCart,
+  dataFetch,
+  modalDescriptionOpen,
+  modalSubmitClose,
+} from "../../../reducers";
 import "./Cards.scss";
 import RingLoader from "react-spinners/RingLoader";
 
 const Cards = () => {
   const dispatch = useDispatch();
   const userCategory = useSelector((state) => state.filter.selectedCategory);
+
+  const submission = useSelector((state) => state.modal.isModalSubmit);
+  const form = useSelector((state) => state.modal.isForm);
   const fetchData = useSelector((state) => state.data.data);
   const loader = useSelector((state) => state.data.isLoading);
   const [data, setData] = useState([]);
+  const descriptionModal = useSelector(
+    (state) => state.modal.isDescriptionModal
+  );
 
   useEffect(() => {
     dispatch(dataFetch({ category: userCategory }));
@@ -54,6 +69,9 @@ const Cards = () => {
                 key={product.id}
                 setProduct={() => setSelectedProduct(product)}
                 item={product}
+                openModal={() => {
+                  dispatch(modalDescriptionOpen());
+                }}
               />
             ))}
           </div>
@@ -69,6 +87,19 @@ const Cards = () => {
           onConfirm={() => {
             dispatch(addToCart(selectedProduct));
             dispatch(modalClose());
+          }}
+        />
+      )}
+      {descriptionModal && <DescriptionModal />}
+      {form && <UserForm />}
+      {submission && (
+        <ModalOnSubmit
+          text="Thank you for choosen our product!"
+          onCancel={() => {
+            dispatch(modalSubmitClose());
+          }}
+          onConfirm={() => {
+            dispatch(modalSubmitClose());
           }}
         />
       )}

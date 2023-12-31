@@ -1,7 +1,10 @@
 import ConfirmButton from "../../Buttons/ConfirmButton/ConfirmButton";
+
 import { AiFillHeart } from "react-icons/ai";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
+import { fetchProductById } from "../../../reducers/data.reducer";
 import {
   addToFavourite,
   modalOpen,
@@ -11,17 +14,19 @@ import { useDispatch } from "react-redux";
 
 import "./Card.scss";
 
-const Card = ({ item, setProduct }) => {
-  const { name, price, img, id } = item;
-  
+const Card = ({ item, setProduct, openModal }) => {
+  const { name, price, img, id, _id } = item;
+
   const dispatch = useDispatch();
+  const handleCardClick = () => {
+    dispatch(fetchProductById(_id));
+  };
 
   const favourite = Boolean(
     JSON.parse(localStorage.getItem("favourite"))?.find(
       (favourite) => favourite.id === id
     )
   );
-
   const [addedToFavorites, setAddedToFavorites] = useState(
     !favourite ? false : true
   );
@@ -49,7 +54,7 @@ const Card = ({ item, setProduct }) => {
             <AiFillHeart
               className="favourite-icon"
               style={{
-                color: "red",
+                color: "#bf4800",
               }}
               onClick={() => {
                 dispatch(removeFromFavourite(item));
@@ -62,12 +67,7 @@ const Card = ({ item, setProduct }) => {
       </div>
 
       <div className="image-wrapper">
-        <img
-         
-          src={img}
-          alt="Iphone"
-          className="image-item"
-        />
+        <img src={img} alt="Iphone" className="image-item" />
       </div>
       <div className="bottom-wrapp">
         <p className="price">£{price}</p>
@@ -80,6 +80,15 @@ const Card = ({ item, setProduct }) => {
           }}
         />
       </div>
+      <button
+        className="read-more-hidden"
+        onClick={() => {
+          openModal();
+          handleCardClick();
+        }}
+      >
+        Read more
+      </button>
     </div>
   );
 };

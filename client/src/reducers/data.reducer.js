@@ -5,6 +5,7 @@ import { API_URL } from "../config/API";
 const initialState = {
   data: [],
   isLoading: false,
+  selectedCard: null,
 };
 
 export const dataFetch = createAsyncThunk(
@@ -13,7 +14,15 @@ export const dataFetch = createAsyncThunk(
     const response = await sendRequest(
       `${API_URL}/products${category ? `?category=${category}` : ""}`
     );
-    return response;
+    return response.data;
+  }
+);
+
+export const fetchProductById = createAsyncThunk(
+  "data/fetchProductById",
+  async (productId) => {
+    const response = await sendRequest(`${API_URL}/products/${productId}`);
+    return response.data;
   }
 );
 
@@ -22,12 +31,19 @@ const dataSlice = createSlice({
   initialState,
 
   extraReducers: (builder) => {
+    builder.addCase(fetchProductById.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(fetchProductById.fulfilled, (state, { payload }) => {
+      state.selectedCard = payload;
+      state.isLoading = false;
+    });
+
     builder.addCase(dataFetch.pending, (state) => {
       state.isLoading = true;
     });
     builder.addCase(dataFetch.fulfilled, (state, { payload }) => {
       state.data = payload;
-      console.log(payload);
       state.isLoading = false;
     });
   },
