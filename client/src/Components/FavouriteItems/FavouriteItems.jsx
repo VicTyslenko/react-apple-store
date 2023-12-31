@@ -40,7 +40,7 @@ const FavouriteItems = () => {
                     <h1 className="item-title">{el.name}</h1>
                     <AiFillHeart
                       style={{
-                        color: "red",
+                        color: "#bf4800",
                         cursor: "pointer",
                         width: "20px",
                         height: "20px",

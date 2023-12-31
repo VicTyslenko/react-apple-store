@@ -5,7 +5,7 @@ import "./Input.scss";
 
 const Input = ({ type, placeholder, name }) => {
   return (
-    <div>
+    <div className="form-input_wrapper">
       <Field
         type={type}
         className="form-input"

@@ -9,7 +9,6 @@ import {
   addToFavourite,
   modalOpen,
   removeFromFavourite,
- 
 } from "../../../reducers";
 import { useDispatch } from "react-redux";
 
@@ -55,7 +54,7 @@ const Card = ({ item, setProduct, openModal }) => {
             <AiFillHeart
               className="favourite-icon"
               style={{
-                color: "red",
+                color: "#bf4800",
               }}
               onClick={() => {
                 dispatch(removeFromFavourite(item));
