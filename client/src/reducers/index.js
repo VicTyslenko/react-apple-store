@@ -3,6 +3,8 @@ import cartReducer, {
   removeFromCart,
   emptyCart,
   totalPriceCount,
+  increaseItemsQuantity,
+  decreaseItemsQuantity
 } from "./cart.reducer";
 import modalReducer, {
   modalOpen,
@@ -30,6 +32,8 @@ export {
   modalOpen,
   modalClose,
   dataFetch,
+  increaseItemsQuantity,
+  decreaseItemsQuantity,
   favouriteReducer,
   addToFavourite,
   removeFromFavourite,

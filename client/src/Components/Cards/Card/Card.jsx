@@ -4,7 +4,10 @@ import { AiFillHeart } from "react-icons/ai";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
-import { fetchProductById } from "../../../reducers/data.reducer";
+import {
+  fetchProductById,
+  
+} from "../../../reducers/data.reducer";
 import {
   addToFavourite,
   modalOpen,
@@ -71,6 +74,8 @@ const Card = ({ item, setProduct, openModal }) => {
       </div>
       <div className="bottom-wrapp">
         <p className="price">£{price}</p>
+    
+
         <ConfirmButton
           text="Add to bag"
           className="add-btn"

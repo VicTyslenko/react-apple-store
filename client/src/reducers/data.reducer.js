@@ -48,4 +48,5 @@ const dataSlice = createSlice({
     });
   },
 });
+export const { increaseItemsQuantity } = dataSlice.actions;
 export default dataSlice.reducer;

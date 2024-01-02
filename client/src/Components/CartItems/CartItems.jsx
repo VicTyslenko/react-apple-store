@@ -9,6 +9,8 @@ import {
   modalOpen,
   modalSubmitClose,
   emptyCart,
+  increaseItemsQuantity,
+  decreaseItemsQuantity,
 } from "../../reducers";
 import ConfirmButton from "../Buttons/ConfirmButton/ConfirmButton";
 import { formOpen } from "../../reducers/modal.reducer";
@@ -20,6 +22,7 @@ const CartItems = () => {
   const dispatch = useDispatch();
   const modal = useSelector((state) => state.modal.isModal);
   const cart = useSelector((state) => state.cart.cartToLocal);
+  console.log(cart);
   const navigate = useNavigate();
   const totalPrice = useSelector((state) => state.cart.totalPrice);
   const form = useSelector((state) => state.modal.isForm);
@@ -100,6 +103,23 @@ const CartItems = () => {
                       />
                     )}
                   </div>
+                </div>
+                <div className="quantity-btn-wrapp">
+                  <button
+                    onClick={() => {
+                      dispatch(increaseItemsQuantity(el));
+                    }}
+                  >
+                    +
+                  </button>
+                  <p className="quantity">{el.quantity}</p>
+                  <button
+                    onClick={() => {
+                      dispatch(decreaseItemsQuantity(el));
+                    }}
+                  >
+                    -
+                  </button>
                 </div>
               </div>
             ))}
