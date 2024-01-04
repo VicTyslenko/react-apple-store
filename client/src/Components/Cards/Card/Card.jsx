@@ -3,16 +3,13 @@ import ConfirmButton from "../../Buttons/ConfirmButton/ConfirmButton";
 import { AiFillHeart } from "react-icons/ai";
 import { useState } from "react";
 import PropTypes from "prop-types";
-import {
-  fetchProductById,
-  
-} from "../../../reducers/data.reducer";
+import { fetchProductById } from "../../../reducers/data.reducer";
 import {
   addToFavourite,
   modalOpen,
   removeFromFavourite,
 } from "../../../reducers";
-import { useDispatch } from "react-redux"; 
+import { useDispatch } from "react-redux";
 
 import "./Card.scss";
 
@@ -20,9 +17,6 @@ const Card = ({ item, setProduct, openModal }) => {
   const { name, price, img, id, _id } = item;
 
   const dispatch = useDispatch();
-  const handleCardClick = () => {
-    dispatch(fetchProductById(_id));
-  };
 
   const favourite = Boolean(
     JSON.parse(localStorage.getItem("favourite"))?.find(
@@ -73,7 +67,6 @@ const Card = ({ item, setProduct, openModal }) => {
       </div>
       <div className="bottom-wrapp">
         <p className="price">£{price}</p>
-    
 
         <ConfirmButton
           text="Add to bag"
@@ -88,7 +81,7 @@ const Card = ({ item, setProduct, openModal }) => {
         className="read-more-hidden"
         onClick={() => {
           openModal();
-          handleCardClick();
+          dispatch(fetchProductById(_id));
         }}
       >
         Read more

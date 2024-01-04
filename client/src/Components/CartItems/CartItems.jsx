@@ -1,4 +1,3 @@
-import { RxCross2 } from "react-icons/rx";
 import { useEffect } from "react";
 import { IoBag } from "react-icons/io5";
 import Modal from "../Modal/Modal";
@@ -6,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { CiSquarePlus } from "react-icons/ci";
 import { CiSquareMinus } from "react-icons/ci";
+import DescriptionModal from "../Modal/DescriptionModal/DescriptionModal";
 import {
   removeFromCart,
   modalClose,
@@ -29,6 +29,9 @@ const CartItems = () => {
   const totalPrice = useSelector((state) => state.cart.totalPrice);
   const form = useSelector((state) => state.modal.isForm);
   const submission = useSelector((state) => state.modal.isModalSubmit);
+  const descriptionModal = useSelector(
+    (state) => state.modal.isDescriptionModal
+  );
 
   useEffect(() => {
     localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
@@ -71,16 +74,14 @@ const CartItems = () => {
                 <div className="item-wrapper">
                   <div className="top-wrapp">
                     <h1 className="item-title">{el.name}</h1>
-                    <div className="close-icon_wrapper">
-                      <RxCross2
-                        style={{
-                          color: "black",
-                        }}
-                        onClick={() => {
-                          dispatch(modalOpen());
-                        }}
-                      />
-                    </div>
+                    <p
+                      className="remove"
+                      onClick={() => {
+                        dispatch(modalOpen());
+                      }}
+                    >
+                      Remove
+                    </p>
                   </div>
 
                   <div className="img-wrapper">
@@ -128,6 +129,7 @@ const CartItems = () => {
               </div>
             ))}
             {form && <UserForm />}
+            {descriptionModal && <DescriptionModal />}
             {submission && (
               <ModalOnSubmit
                 text="Thank you for choosen our product!"
