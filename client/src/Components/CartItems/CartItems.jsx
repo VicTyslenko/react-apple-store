@@ -1,8 +1,11 @@
 import { RxCross2 } from "react-icons/rx";
+import { useEffect } from "react";
 import { IoBag } from "react-icons/io5";
 import Modal from "../Modal/Modal";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { CiSquarePlus } from "react-icons/ci";
+import { CiSquareMinus } from "react-icons/ci";
 import {
   removeFromCart,
   modalClose,
@@ -22,11 +25,14 @@ const CartItems = () => {
   const dispatch = useDispatch();
   const modal = useSelector((state) => state.modal.isModal);
   const cart = useSelector((state) => state.cart.cartToLocal);
-  console.log(cart);
   const navigate = useNavigate();
   const totalPrice = useSelector((state) => state.cart.totalPrice);
   const form = useSelector((state) => state.modal.isForm);
   const submission = useSelector((state) => state.modal.isModalSubmit);
+
+  useEffect(() => {
+    localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
+  }, [totalPrice]);
   return (
     <>
       {cart.length === 0 ? (
@@ -83,6 +89,21 @@ const CartItems = () => {
 
                   <div className="price-wrapp">
                     <p className="price">£{el.price}</p>
+                    <div className="quantity-btn-wrapp">
+                      <CiSquarePlus
+                        className="quantity-btn"
+                        onClick={() => {
+                          dispatch(increaseItemsQuantity(el));
+                        }}
+                      />
+                      <p className="quantity">{el.quantity}</p>
+                      <CiSquareMinus
+                        className="quantity-btn"
+                        onClick={() => {
+                          dispatch(decreaseItemsQuantity(el));
+                        }}
+                      />
+                    </div>
                     <ConfirmButton
                       className="confirm-btn"
                       text="Buy"
@@ -103,23 +124,6 @@ const CartItems = () => {
                       />
                     )}
                   </div>
-                </div>
-                <div className="quantity-btn-wrapp">
-                  <button
-                    onClick={() => {
-                      dispatch(increaseItemsQuantity(el));
-                    }}
-                  >
-                    +
-                  </button>
-                  <p className="quantity">{el.quantity}</p>
-                  <button
-                    onClick={() => {
-                      dispatch(decreaseItemsQuantity(el));
-                    }}
-                  >
-                    -
-                  </button>
                 </div>
               </div>
             ))}

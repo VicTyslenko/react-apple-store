@@ -2,7 +2,6 @@ import ConfirmButton from "../../Buttons/ConfirmButton/ConfirmButton";
 
 import { AiFillHeart } from "react-icons/ai";
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import {
   fetchProductById,
@@ -13,7 +12,7 @@ import {
   modalOpen,
   removeFromFavourite,
 } from "../../../reducers";
-import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux"; 
 
 import "./Card.scss";
 
