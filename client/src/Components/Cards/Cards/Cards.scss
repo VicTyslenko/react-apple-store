@@ -1,10 +1,23 @@
 .main-cards-wrapper {
+  position: relative;
   .main-title {
     font-size: 40px;
     color: #1d1d1f;
     padding: 100px 0 50px 80px;
     margin: 0;
     font-weight: 600;
+  }
+  .back {
+    position: absolute;
+    color: #0071e3;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 20px;
+    font-family: SF Pro Text, SF Pro Icons, AOS Icons, Helvetica Neue, Helvetica,
+      Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 2px;
   }
 }
 

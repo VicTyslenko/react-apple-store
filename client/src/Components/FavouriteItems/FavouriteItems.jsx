@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { AiFillHeart } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import ConfirmButton from "../Buttons/ConfirmButton/ConfirmButton";
+import { IoIosArrowBack } from "react-icons/io";
 import { removeFromFavourite, addToCart } from "../../reducers";
 import "./favourite.scss";
 
@@ -23,14 +24,15 @@ const FavouriteItems = () => {
           <div className="top-wrapper">
             <p className="title">Favourite items</p>
 
-            <p
+            <div
               className="back"
               onClick={() => {
                 navigate(-1);
               }}
             >
-              Back
-            </p>
+              <IoIosArrowBack />
+              <p>Back</p>
+            </div>
           </div>
           <div className="cart-items-wrapper">
             {favouriteItems.map((el) => (

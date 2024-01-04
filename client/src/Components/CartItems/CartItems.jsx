@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CiSquarePlus } from "react-icons/ci";
 import { CiSquareMinus } from "react-icons/ci";
 import DescriptionModal from "../Modal/DescriptionModal/DescriptionModal";
+import { IoIosArrowBack } from "react-icons/io";
 import {
   removeFromCart,
   modalClose,
@@ -58,15 +59,15 @@ const CartItems = () => {
                 Total price: <span className="price-color">£{totalPrice}</span>
               </p>
             </div>
-
-            <p
+            <div
               className="back"
               onClick={() => {
                 navigate(-1);
               }}
             >
-              Back
-            </p>
+              <IoIosArrowBack />
+              <p>Back</p>
+            </div>
           </div>
           <div className="cart-items-wrapper">
             {cart.map((el) => (

@@ -19,7 +19,6 @@ import RingLoader from "react-spinners/RingLoader";
 const Cards = () => {
   const dispatch = useDispatch();
   const userCategory = useSelector((state) => state.filter.selectedCategory);
-
   const submission = useSelector((state) => state.modal.isModalSubmit);
   const form = useSelector((state) => state.modal.isForm);
   const fetchData = useSelector((state) => state.data.data);
@@ -57,6 +56,7 @@ const Cards = () => {
         <h1 className="main-title">
           {userCategory === "iphone" ? iPhoneTitle : title}
         </h1>
+
         {loader ? (
           <div className="products-wrapper">
             <RingLoader className="loader" />
