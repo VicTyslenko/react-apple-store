@@ -6,6 +6,7 @@ import "./App.scss";
 import FavouriteItems from "./Components/FavouriteItems/FavouriteItems";
 
 const App = () => {
+  
   return (
     <div className="container">
       <Header />
