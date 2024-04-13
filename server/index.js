@@ -14,8 +14,8 @@ app.use(express.urlencoded({ extended: true }));
 const urlencodedParser = express.urlencoded({ extended: false });
 const PORT = process.env.PORT || 4444;
 
-const MONGO_URL =
-  "mongodb+srv://VTyslenko:drummerbass4000@cluster0.weallwn.mongodb.net/apple-products";
+// const MONGO_URL =
+
 app.use(apiRouter);
 app.use("/api", urlencodedParser, usersApiRouter);
 // app.use("/auth", urlencodedParser, authApiRouter);
