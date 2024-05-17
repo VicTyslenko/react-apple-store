@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
+require('dotenv').config();
 
 app.use(express.json());
 const apiRouter = require("./routers/products.api");
@@ -14,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 const urlencodedParser = express.urlencoded({ extended: false });
 const PORT = process.env.PORT || 4444;
 
-// const MONGO_URL =
+const MONGO_URL = process.env.MONGO_URL;
 
 app.use(apiRouter);
 app.use("/api", urlencodedParser, usersApiRouter);
