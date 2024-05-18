@@ -37,6 +37,8 @@ const Cards = () => {
 
   const [selectedProduct, setSelectedProduct] = useState([]);
 
+  const searchedItems = [];
+
   return (
     <>
       <section className="main-cards-wrapper">
@@ -88,7 +90,7 @@ const Cards = () => {
           }}
         />
       )}
-      {searchModal && <SearchModal />}
+      {searchModal && <SearchModal searchedItems={data} />}
     </>
   );
 };
