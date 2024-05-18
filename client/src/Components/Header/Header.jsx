@@ -16,7 +16,6 @@ const Header = () => {
   const navigate = useNavigate();
   const cartCount = useSelector((state) => state.cart.cartToLocal);
   const favCount = useSelector((state) => state.favourite.favouriteToLocal);
-  const modal = useSelector((state) => state.modal.isModal);
   const products = ["Mac", "iPhone", "Watch", "AirPods"];
 
   const favIconColor = favCount.length ? "red-icon" : "black-icon";
@@ -25,10 +24,6 @@ const Header = () => {
     localStorage.setItem("cart", JSON.stringify(cartCount));
     localStorage.setItem("favourite", JSON.stringify(favCount));
   }, [cartCount, favCount]);
-
-  const handleModalOpen = () => {
-    dispatch(openModal(modal));
-  };
 
   return (
     <section className="header">
@@ -66,8 +61,9 @@ const Header = () => {
       <div className="header-icons-wrapp">
         <IoIosSearch
           onClick={() => {
-            handleModalOpen();
+            dispatch(openModal("isSearchModal"));
           }}
+          className="search-icon-header"
         />
         <sup className="counter">{favCount.length}</sup>
         <Link to="/favourites">
@@ -78,7 +74,6 @@ const Header = () => {
           <IoBag className={cartIconColor} />
         </Link>
       </div>
-      {/* <SearchModal /> */}
     </section>
   );
 };

@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import ModalOnSubmit from "../../Modal/ModalOnSubmit/ModalOnSubmit";
 import { addToCart, dataFetch, openModal, closeModal } from "../../../reducers";
+import SearchModal from "../../Modal/SearchModal/SearchModal";
 import "./Cards.scss";
 import RingLoader from "react-spinners/RingLoader";
 
@@ -21,7 +22,7 @@ const Cards = () => {
 
   const descriptionModal = useSelector((state) => state.modal.isDescriptionModal);
   const modal = useSelector((state) => state.modal.isModal);
-
+  const searchModal = useSelector((state) => state.modal.isSearchModal);
   useEffect(() => {
     dispatch(dataFetch({ category: userCategory }));
   }, [userCategory, dispatch]);
@@ -87,6 +88,7 @@ const Cards = () => {
           }}
         />
       )}
+      {searchModal && <SearchModal />}
     </>
   );
 };

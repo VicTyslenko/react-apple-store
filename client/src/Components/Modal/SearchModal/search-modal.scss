@@ -1,0 +1,41 @@
+.total-search-modal-wrapp {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(152, 152, 152, 0.85);
+
+  .search-modal-wrapp {
+    position: relative;
+    height: 60vh;
+    background: white;
+    padding: 0 130px;
+    z-index: 2;
+    animation: slide-down 0.5s ease-out;
+    padding-top: 100px;
+  }
+
+  .search-input {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+  }
+
+  .search-input-wrapp {
+    display: flex;
+    align-items: center;
+  }
+}
+@keyframes slide-down {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY();
+  }
+}
