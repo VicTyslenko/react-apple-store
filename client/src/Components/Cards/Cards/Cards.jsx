@@ -6,13 +6,7 @@ import UserForm from "../../Form/Components/UserForm";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import ModalOnSubmit from "../../Modal/ModalOnSubmit/ModalOnSubmit";
-import {
-  modalClose,
-  addToCart,
-  dataFetch,
-  modalDescriptionOpen,
-  modalSubmitClose,
-} from "../../../reducers";
+import { addToCart, dataFetch, openModal, closeModal } from "../../../reducers";
 import "./Cards.scss";
 import RingLoader from "react-spinners/RingLoader";
 
@@ -24,38 +18,28 @@ const Cards = () => {
   const fetchData = useSelector((state) => state.data.data);
   const loader = useSelector((state) => state.data.isLoading);
   const [data, setData] = useState([]);
-  const descriptionModal = useSelector(
-    (state) => state.modal.isDescriptionModal
-  );
+
+  const descriptionModal = useSelector((state) => state.modal.isDescriptionModal);
+  const modal = useSelector((state) => state.modal.isModal);
 
   useEffect(() => {
     dispatch(dataFetch({ category: userCategory }));
   }, [userCategory, dispatch]);
-  const title = userCategory
-    ? `${userCategory.charAt(0).toUpperCase() + userCategory.slice(1)} shop`
-    : "Shop";
+  const title = userCategory ? `${userCategory.charAt(0).toUpperCase() + userCategory.slice(1)} shop` : "Shop";
 
   const iPhoneTitle =
-    userCategory &&
-    userCategory.charAt(0).toLowerCase() +
-      userCategory.charAt(1).toUpperCase() +
-      userCategory.slice(2) +
-      " " +
-      "shop";
+    userCategory && userCategory.charAt(0).toLowerCase() + userCategory.charAt(1).toUpperCase() + userCategory.slice(2) + " " + "shop";
 
   useEffect(() => {
     setData(fetchData.data);
   }, [fetchData]);
-  const modal = useSelector((state) => state.modal.isModal);
 
   const [selectedProduct, setSelectedProduct] = useState([]);
 
   return (
     <>
       <section className="main-cards-wrapper">
-        <h1 className="main-title">
-          {userCategory === "iphone" ? iPhoneTitle : title}
-        </h1>
+        <h1 className="main-title">{userCategory === "iphone" ? iPhoneTitle : title}</h1>
 
         {loader ? (
           <div className="products-wrapper">
@@ -69,8 +53,8 @@ const Cards = () => {
                 key={product.id}
                 setProduct={() => setSelectedProduct(product)}
                 item={product}
-                openModal={() => {
-                  dispatch(modalDescriptionOpen());
+                openDescriptionModal={() => {
+                  dispatch(openModal("isDescriptionModal"));
                 }}
               />
             ))}
@@ -82,11 +66,11 @@ const Cards = () => {
         <Modal
           text="Would you like to continue?"
           onCancel={() => {
-            dispatch(modalClose());
+            dispatch(closeModal("isModal"));
           }}
           onConfirm={() => {
             dispatch(addToCart(selectedProduct));
-            dispatch(modalClose());
+            dispatch(closeModal("isModal"));
           }}
         />
       )}
@@ -96,10 +80,10 @@ const Cards = () => {
         <ModalOnSubmit
           text="Thank you for choosen our product!"
           onCancel={() => {
-            dispatch(modalSubmitClose());
+            dispatch(closeModal("isModalSubmit"));
           }}
           onConfirm={() => {
-            dispatch(modalSubmitClose());
+            dispatch(closeModal("isModalSubmit"));
           }}
         />
       )}

@@ -7,15 +7,7 @@ import { CiSquarePlus } from "react-icons/ci";
 import { CiSquareMinus } from "react-icons/ci";
 import DescriptionModal from "../Modal/DescriptionModal/DescriptionModal";
 import { IoIosArrowBack } from "react-icons/io";
-import {
-  removeFromCart,
-  modalClose,
-  modalOpen,
-  modalSubmitClose,
-  emptyCart,
-  increaseItemsQuantity,
-  decreaseItemsQuantity,
-} from "../../reducers";
+import { removeFromCart, openModal, closeModal, emptyCart, increaseItemsQuantity, decreaseItemsQuantity } from "../../reducers";
 import ConfirmButton from "../Buttons/ConfirmButton/ConfirmButton";
 import { formOpen } from "../../reducers/modal.reducer";
 import UserForm from "../Form/Components/UserForm";
@@ -24,15 +16,14 @@ import "./CartItems.scss";
 
 const CartItems = () => {
   const dispatch = useDispatch();
+
   const modal = useSelector((state) => state.modal.isModal);
+  const descriptionModal = useSelector((state) => state.modal.isDescriptionModal);
   const cart = useSelector((state) => state.cart.cartToLocal);
   const navigate = useNavigate();
   const totalPrice = useSelector((state) => state.cart.totalPrice);
   const form = useSelector((state) => state.modal.isForm);
   const submission = useSelector((state) => state.modal.isModalSubmit);
-  const descriptionModal = useSelector(
-    (state) => state.modal.isDescriptionModal
-  );
 
   useEffect(() => {
     localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
@@ -78,7 +69,7 @@ const CartItems = () => {
                     <p
                       className="remove"
                       onClick={() => {
-                        dispatch(modalOpen());
+                        dispatch(openModal("isModal"));
                       }}
                     >
                       Remove
@@ -117,11 +108,11 @@ const CartItems = () => {
                       <Modal
                         text="Delete this item from your shopping bag?"
                         onCancel={() => {
-                          dispatch(modalClose());
+                          dispatch(closeModal("isModal"));
                         }}
                         onConfirm={() => {
                           dispatch(removeFromCart(el));
-                          dispatch(modalClose());
+                          dispatch(closeModal("isModal"));
                         }}
                       />
                     )}
@@ -135,11 +126,11 @@ const CartItems = () => {
               <ModalOnSubmit
                 text="Thank you for choosen our product!"
                 onCancel={() => {
-                  dispatch(modalSubmitClose());
+                  dispatch(closeModal("isModalSubmit"));
                 }}
                 onConfirm={() => {
                   dispatch(emptyCart());
-                  dispatch(modalSubmitClose());
+                  dispatch(closeModal("isModalSubmit"));
                 }}
               />
             )}

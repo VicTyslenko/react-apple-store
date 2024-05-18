@@ -2,13 +2,15 @@
   width: auto;
   display: flex;
   justify-content: space-between;
-  padding: 0 80px;
+  padding: 0 130px;
   background-color: rgba(228, 228, 228, 0.9);
   position: fixed;
   z-index: 100;
   top: 0;
   left: 0;
   right: 0;
+
+  
   .title-wrapp {
     cursor: pointer;
     display: flex;

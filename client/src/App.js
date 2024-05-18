@@ -6,7 +6,6 @@ import "./App.scss";
 import FavouriteItems from "./Components/FavouriteItems/FavouriteItems";
 
 const App = () => {
-  
   return (
     <div className="container">
       <Header />
@@ -16,10 +15,7 @@ const App = () => {
         <Route path="/" element={<Cards />} />
         <Route path="/favourites" element={<FavouriteItems />} />
 
-        <Route
-          path="*"
-          element={<p style={{ paddingTop: "100px" }}>page is not found</p>}
-        />
+        <Route path="*" element={<p style={{ paddingTop: "100px" }}>page is not found</p>} />
       </Routes>
     </div>
   );

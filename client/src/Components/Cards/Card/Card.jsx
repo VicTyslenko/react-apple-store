@@ -4,28 +4,18 @@ import { AiFillHeart } from "react-icons/ai";
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { fetchProductById } from "../../../reducers/data.reducer";
-import {
-  addToFavourite,
-  modalOpen,
-  removeFromFavourite,
-} from "../../../reducers";
+import { addToFavourite, openModal, removeFromFavourite } from "../../../reducers";
 import { useDispatch } from "react-redux";
 
 import "./Card.scss";
 
-const Card = ({ item, setProduct, openModal }) => {
+const Card = ({ item, setProduct, openDescriptionModal }) => {
   const { name, price, img, id, _id } = item;
 
   const dispatch = useDispatch();
 
-  const favourite = Boolean(
-    JSON.parse(localStorage.getItem("favourite"))?.find(
-      (favourite) => favourite.id === id
-    )
-  );
-  const [addedToFavorites, setAddedToFavorites] = useState(
-    !favourite ? false : true
-  );
+  const favourite = Boolean(JSON.parse(localStorage.getItem("favourite"))?.find((favourite) => favourite.id === id));
+  const [addedToFavorites, setAddedToFavorites] = useState(!favourite ? false : true);
   const [notFavorites, setNotFavorites] = useState(favourite ? false : true);
 
   return (
@@ -72,7 +62,7 @@ const Card = ({ item, setProduct, openModal }) => {
           text="Add to bag"
           className="add-btn"
           onClick={() => {
-            dispatch(modalOpen());
+            dispatch(openModal("isModal"));
             setProduct();
           }}
         />
@@ -80,7 +70,7 @@ const Card = ({ item, setProduct, openModal }) => {
       <button
         className="read-more-hidden"
         onClick={() => {
-          openModal();
+          openDescriptionModal();
           dispatch(fetchProductById(_id));
         }}
       >

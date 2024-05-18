@@ -7,7 +7,7 @@ import ConfirmButton from "../../Buttons/ConfirmButton/ConfirmButton";
 import sendRequest from "../../../Helpers/sendRequest";
 import { API_URL } from "../../../config/API";
 import { RxCross2 } from "react-icons/rx";
-import { modalSubmitOpen, modalDescriptionClose } from "../../../reducers";
+import { openModal, closeModal } from "../../../reducers";
 
 import Input from "./Input/Input";
 import "./UserForm.scss";
@@ -18,17 +18,13 @@ const UserForm = () => {
 
   const formInfo = async (values) => {
     try {
-      const result = await sendRequest(
-        `${API_URL}/api/register`,
-        "POST",
-        values
-      );
+      const result = await sendRequest(`${API_URL}/api/register`, "POST", values);
       if (result.status >= 200 && result.status < 300) {
         console.log(result.data.message);
         setServerError(null);
         dispatch(formClose());
-        dispatch(modalSubmitOpen());
-        dispatch(modalDescriptionClose());
+        dispatch(openModal("isModalSubmit"));
+        dispatch(closeModal("isDescriptionModal"));
       } else {
         setServerError(result.data);
         console.log(result.data);
@@ -71,41 +67,12 @@ const UserForm = () => {
 
               <h1 className="form-title">Please, fill the form</h1>
 
-              <Input
-                name="name"
-                placeholder="Name"
-                error={errors.name && touched.name}
-                type="text"
-              />
-              <Input
-                name="lastName"
-                placeholder="Last Name"
-                error={errors.lastName && touched.lastName}
-                type="text"
-              />
-              <Input
-                name="age"
-                placeholder="age"
-                error={errors.age && touched.age}
-                type="number"
-              />
-              <Input
-                name="address"
-                placeholder="address"
-                error={errors.address && touched.address}
-                type="text"
-              />
-              <Input
-                name="phone"
-                placeholder="phone number"
-                error={errors.phone && touched.phone}
-                type="tel"
-              />
-              <ConfirmButton
-                text="Submit"
-                type="submit"
-                className="confirm-btn"
-              />
+              <Input name="name" placeholder="Name" error={errors.name && touched.name} type="text" />
+              <Input name="lastName" placeholder="Last Name" error={errors.lastName && touched.lastName} type="text" />
+              <Input name="age" placeholder="age" error={errors.age && touched.age} type="number" />
+              <Input name="address" placeholder="address" error={errors.address && touched.address} type="text" />
+              <Input name="phone" placeholder="phone number" error={errors.phone && touched.phone} type="tel" />
+              <ConfirmButton text="Submit" type="submit" className="confirm-btn" />
             </Form>
           )}
         </Formik>

@@ -5,10 +5,10 @@ import { useEffect } from "react";
 import { FaApple } from "react-icons/fa";
 import { IoBag } from "react-icons/io5";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  setSelectedCategory,
-  resetSelectedCategory,
-} from "../../reducers/filter.reducer";
+import { openModal, closeModal } from "../../reducers";
+import { setSelectedCategory, resetSelectedCategory } from "../../reducers/filter.reducer";
+import { IoIosSearch } from "react-icons/io";
+import SearchModal from "../Modal/SearchModal/SearchModal";
 import "./Header.scss";
 
 const Header = () => {
@@ -16,6 +16,7 @@ const Header = () => {
   const navigate = useNavigate();
   const cartCount = useSelector((state) => state.cart.cartToLocal);
   const favCount = useSelector((state) => state.favourite.favouriteToLocal);
+  const modal = useSelector((state) => state.modal.isModal);
   const products = ["Mac", "iPhone", "Watch", "AirPods"];
 
   const favIconColor = favCount.length ? "red-icon" : "black-icon";
@@ -24,6 +25,11 @@ const Header = () => {
     localStorage.setItem("cart", JSON.stringify(cartCount));
     localStorage.setItem("favourite", JSON.stringify(favCount));
   }, [cartCount, favCount]);
+
+  const handleModalOpen = () => {
+    dispatch(openModal(modal));
+  };
+
   return (
     <section className="header">
       <div
@@ -57,8 +63,12 @@ const Header = () => {
           </li>
         ))}
       </ul>
-
       <div className="header-icons-wrapp">
+        <IoIosSearch
+          onClick={() => {
+            handleModalOpen();
+          }}
+        />
         <sup className="counter">{favCount.length}</sup>
         <Link to="/favourites">
           <AiFillHeart className={favIconColor} />
@@ -68,6 +78,7 @@ const Header = () => {
           <IoBag className={cartIconColor} />
         </Link>
       </div>
+      {/* <SearchModal /> */}
     </section>
   );
 };

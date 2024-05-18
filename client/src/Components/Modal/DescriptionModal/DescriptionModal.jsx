@@ -1,12 +1,13 @@
 import { useSelector, useDispatch } from "react-redux";
 import ConfirmButton from "../../Buttons/ConfirmButton/ConfirmButton";
-import { formOpen, modalDescriptionClose } from "../../../reducers";
+import { formOpen, closeModal } from "../../../reducers";
 import RingLoader from "react-spinners/RingLoader";
 import "./DescriptionModal.scss";
 
 const DescriptionModal = () => {
   const dispatch = useDispatch();
   const selectedCard = useSelector((state) => state.data.selectedCard);
+
   const loader = useSelector((state) => state.data.isLoading);
   if (!selectedCard) return null;
   const { name, desc, status, img, price } = selectedCard;
@@ -29,7 +30,7 @@ const DescriptionModal = () => {
               text="Buy"
               onClick={() => {
                 dispatch(formOpen());
-                dispatch(modalDescriptionClose());
+                dispatch(closeModal("isDescriptionModal"));
               }}
             />
           </div>
@@ -45,7 +46,7 @@ const DescriptionModal = () => {
           <span
             className="close-modal"
             onClick={() => {
-              dispatch(modalDescriptionClose());
+              dispatch(closeModal("isDescriptionModal"));
             }}
           >
             X
