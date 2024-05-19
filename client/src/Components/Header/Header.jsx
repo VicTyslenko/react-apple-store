@@ -13,16 +13,28 @@ import "./Header.scss";
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  //selectors
   const cartCount = useSelector((state) => state.cart.cartToLocal);
+  const modal = useSelector((state) => state.modal.isSearchModal);
   const favCount = useSelector((state) => state.favourite.favouriteToLocal);
+
   const products = ["Mac", "iPhone", "Watch", "AirPods"];
 
   const favIconColor = favCount.length ? "red-icon" : "black-icon";
   const cartIconColor = cartCount.length ? "red-icon" : "black-icon";
+
+  const toggleModal = () => {
+    if (!modal) {
+      dispatch(openModal("isSearchModal"));
+    } else {
+      dispatch(closeModal("isSearchModal"));
+    }
+  };
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartCount));
     localStorage.setItem("favourite", JSON.stringify(favCount));
-  }, [cartCount, favCount]);
+  }, [cartCount, favCount, modal]);
 
   return (
     <section className="header">
@@ -30,7 +42,7 @@ const Header = () => {
         className="title-wrapp"
         onClick={() => {
           dispatch(resetSelectedCategory());
-          navigate("/");
+          // navigate("/");
         }}
       >
         <FaApple
@@ -58,12 +70,7 @@ const Header = () => {
         ))}
       </ul>
       <div className="header-icons-wrapp">
-        <IoIosSearch
-          onClick={() => {
-            dispatch(openModal("isSearchModal"));
-          }}
-          className="search-icon-header"
-        />
+        <IoIosSearch className="search-icon-header" onClick={toggleModal} />
         <sup className="counter">{favCount.length}</sup>
         <Link to="/favourites">
           <AiFillHeart className={favIconColor} />

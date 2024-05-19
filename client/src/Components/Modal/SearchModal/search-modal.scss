@@ -31,6 +31,10 @@
   .search-item {
     cursor: pointer;
   }
+  .search-icon {
+    width: 20px;
+    height: 20px;
+  }
   .search-item:not(:last-child) {
     margin-bottom: 7px;
   }

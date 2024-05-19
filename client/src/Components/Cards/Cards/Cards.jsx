@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Modal from "../../Modal/Modal";
 import Card from "../Card/Card";
 import DescriptionModal from "../../Modal/DescriptionModal/DescriptionModal";
@@ -13,31 +13,28 @@ import RingLoader from "react-spinners/RingLoader";
 
 const Cards = () => {
   const dispatch = useDispatch();
+  const [data, setData] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState([]);
   const userCategory = useSelector((state) => state.filter.selectedCategory);
   const submission = useSelector((state) => state.modal.isModalSubmit);
   const form = useSelector((state) => state.modal.isForm);
   const fetchData = useSelector((state) => state.data.data);
   const loader = useSelector((state) => state.data.isLoading);
-  const [data, setData] = useState([]);
-
   const descriptionModal = useSelector((state) => state.modal.isDescriptionModal);
   const modal = useSelector((state) => state.modal.isModal);
   const searchModal = useSelector((state) => state.modal.isSearchModal);
-
   const title = userCategory ? `${userCategory.charAt(0).toUpperCase() + userCategory.slice(1)} shop` : "Shop";
 
   const iPhoneTitle =
     userCategory && userCategory.charAt(0).toLowerCase() + userCategory.charAt(1).toUpperCase() + userCategory.slice(2) + " " + "shop";
 
   useEffect(() => {
-    dispatch(dataFetch(!searchModal ? { category: userCategory } : ""));
-  }, [userCategory, dispatch, searchModal]);
+    dispatch(dataFetch({ category: userCategory }));
+  }, [userCategory, dispatch]);
 
   useEffect(() => {
     setData(fetchData.data);
-  }, [fetchData, userCategory]);
-
-  const [selectedProduct, setSelectedProduct] = useState([]);
+  }, [fetchData]);
 
   return (
     <>
