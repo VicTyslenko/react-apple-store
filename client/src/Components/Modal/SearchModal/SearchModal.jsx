@@ -1,11 +1,12 @@
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
-
+import { setSelectedCategory } from "../../../reducers/filter.reducer";
 import { closeModal } from "../../../reducers/modal.reducer";
 import { IoIosSearch } from "react-icons/io";
 import "./search-modal.scss";
 
 const SearchModal = ({ searchedItems }) => {
+  const inputRef = useRef(null);
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState("");
 
@@ -17,12 +18,13 @@ const SearchModal = ({ searchedItems }) => {
 
   useEffect(() => {
     if (inputValue.length > 2) {
-      const filteredItems = searchedItems.filter((el) => el.name.substring(0, 2).toLowerCase().includes(inputValue.substring(0, 2).toLowerCase()));
+      const filteredItems = searchedItems.filter((el) => el.name.toLowerCase().includes(inputValue.toLowerCase()));
 
       setShowItems(inputValue ? filteredItems : []);
     } else {
       setShowItems([]);
     }
+    inputRef.current.focus();
   }, [inputValue, searchedItems]);
   return (
     <>
@@ -42,12 +44,12 @@ const SearchModal = ({ searchedItems }) => {
             <div className="icon-wrapp">
               <IoIosSearch />
             </div>
-            <input placeholder="Search" className="search-input" type="text" value={inputValue} onChange={handleInputChange} />
+            <input ref={inputRef} placeholder="Search" className="search-input" type="text" value={inputValue} onChange={handleInputChange} />
           </div>
-          <ul>
+          <ul className="search-list">
             {showItems.length > 0 &&
               showItems.map((item, index) => (
-                <li key={index}>
+                <li key={index} className="search-item">
                   {item.name}
                   {item.model}
                 </li>

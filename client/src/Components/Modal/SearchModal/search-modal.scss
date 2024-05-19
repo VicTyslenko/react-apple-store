@@ -12,10 +12,9 @@
     position: relative;
     min-height: 60vh;
     background: white;
-    padding: 0 130px;
     z-index: 2;
     animation: slide-down 0.5s ease-out;
-    padding-top: 100px;
+    padding: 130px 130px 30px;
   }
 
   .search-input {
@@ -25,12 +24,25 @@
     padding: 10px;
     font-size: 20px;
   }
-
+  .search-list {
+    list-style: none;
+    padding: 30px 0 0 20px;
+  }
+  .search-item {
+    cursor: pointer;
+  }
+  .search-item:not(:last-child) {
+    margin-bottom: 7px;
+  }
+  .search-item:hover {
+    background-color: rgba(239, 239, 239, 0.9);
+  }
   .search-input-wrapp {
     display: flex;
     align-items: center;
   }
 }
+//Animation
 @keyframes slide-down {
   from {
     transform: translateY(-100%);

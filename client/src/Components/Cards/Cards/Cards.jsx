@@ -23,21 +23,21 @@ const Cards = () => {
   const descriptionModal = useSelector((state) => state.modal.isDescriptionModal);
   const modal = useSelector((state) => state.modal.isModal);
   const searchModal = useSelector((state) => state.modal.isSearchModal);
-  useEffect(() => {
-    dispatch(dataFetch({ category: userCategory }));
-  }, [userCategory, dispatch]);
+
   const title = userCategory ? `${userCategory.charAt(0).toUpperCase() + userCategory.slice(1)} shop` : "Shop";
 
   const iPhoneTitle =
     userCategory && userCategory.charAt(0).toLowerCase() + userCategory.charAt(1).toUpperCase() + userCategory.slice(2) + " " + "shop";
 
   useEffect(() => {
+    dispatch(dataFetch(!searchModal ? { category: userCategory } : ""));
+  }, [userCategory, dispatch, searchModal]);
+
+  useEffect(() => {
     setData(fetchData.data);
-  }, [fetchData]);
+  }, [fetchData, userCategory]);
 
   const [selectedProduct, setSelectedProduct] = useState([]);
-
-  const searchedItems = [];
 
   return (
     <>

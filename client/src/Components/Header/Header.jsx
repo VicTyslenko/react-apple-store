@@ -8,7 +8,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { openModal, closeModal } from "../../reducers";
 import { setSelectedCategory, resetSelectedCategory } from "../../reducers/filter.reducer";
 import { IoIosSearch } from "react-icons/io";
-import SearchModal from "../Modal/SearchModal/SearchModal";
 import "./Header.scss";
 
 const Header = () => {
